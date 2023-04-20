@@ -1,6 +1,6 @@
 # Welcome to SMARTSCHOOL PLUS
 
-This is a [firefox](https://www.mozilla.org/en-US/) addon for (SmartSchool)[https://smartschool.be] that adds some cool stuff to the website.
+This is a [firefox](https://www.mozilla.org/en-US/) addon for [SmartSchool](https://smartschool.be) that adds some cool stuff to the website.
 
 ## Features
 - Icons for all the top menu items
