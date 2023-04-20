@@ -1,0 +1,49 @@
+{
+  "manifest_version": 2,
+  "name": "Smartschool +",
+  "version": "1.1",
+  "description": "Adds a red border to all webpages matching mozilla.org.",
+  "icons": {
+    "48": "icons/s+.svg"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.smartschool.be/*"
+      ],
+      "js": [
+        "scripts/icons.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "https://*.smartschool.be/*"
+  ],
+  "web_accessible_resources": [
+    "icons/s+.svg",
+    "icons/home.svg",
+    "icons/go-up.png",
+    "icons/book.png",
+    "icons/mail.png",
+    "icons/notification.png",
+    "icons/bell.png",
+    "icons/active.png",
+    "icons/search.png",
+    "html/settings.html",
+    "scripts/lib/export.js",
+    "scripts/lib/changeicon.js"
+  ],
+  "options_ui": {
+    "page": "html/settings.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6ed3f146-2aae-4c4e-b92b-b1ebed983bb8}"
+    }
+  }
+}
