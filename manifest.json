@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Smartschool +",
-  "version": "1.1",
-  "description": "Adds a red border to all webpages matching mozilla.org.",
+  "version": "2.1",
+  "description": "Makes smartschool nicer.",
   "icons": {
     "48": "icons/s+.svg"
   },
@@ -13,6 +13,14 @@
       ],
       "js": [
         "scripts/icons.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.smartschool.be/*"
+      ],
+      "js": [
+        "scripts/plannerpicturepreview.js"
       ]
     }
   ],
@@ -27,15 +35,14 @@
     "icons/s+.svg",
     "icons/home.svg",
     "icons/go-up.png",
-    "icons/book.png",
+    "icons/courses.png",
     "icons/mail.png",
     "icons/notification.png",
     "icons/bell.png",
     "icons/active.png",
     "icons/search.png",
     "html/settings.html",
-    "scripts/lib/export.js",
-    "scripts/lib/changeicon.js"
+    "scripts/plannerpicturepreview.js"
   ],
   "options_ui": {
     "page": "html/settings.html",
