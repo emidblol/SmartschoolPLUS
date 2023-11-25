@@ -22,6 +22,30 @@
       "js": [
         "scripts/plannerpicturepreview.js"
       ]
+    },
+    {
+      "matches": [
+        "*://*.smartschool.be/*"
+      ],
+      "js": [
+        "scripts/theme.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.smartschool.be/*"
+      ],
+      "js": [
+        "scripts/anonymous.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.smartschool.be/*"
+      ],
+      "js": [
+        "scripts/home.js"
+      ]
     }
   ],
   "permissions": [

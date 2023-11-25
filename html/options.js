@@ -1,30 +1,20 @@
 //on submit
 document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
     //get the anonymous checkbox
     var anonymous = document.getElementsByName("anonymous")[0];
     //set anonymous in sync storage(firefox)
     browser.storage.sync.set({
         anonymous: anonymous.checked
     });
-})
-//get the theme parameter from the url
-var urlParams = new URLSearchParams(window.location.search);
-var theme = urlParams.get('theme');
-var anonymous = urlParams.get('anonymous');
-//if theme is not null
-if (theme != null) {
+    //get the theme radio button
+    var theme = document.querySelector('input[name="theme"]:checked').value;
     //set theme in sync storage(firefox)
     browser.storage.sync.set({
         theme: theme
     });
-} 
-//if anonymous is not null
-if (anonymous != null) {
-    //set anonymous in sync storage(firefox)
-    browser.storage.sync.set({
-        anonymous: anonymous = "on"
-    });
-}
+})
+
 //get theme
 browser.storage.sync.get("theme").then((res) => {
     //select the theme radio button

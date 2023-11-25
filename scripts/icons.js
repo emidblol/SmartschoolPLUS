@@ -6,9 +6,11 @@ var href = window.location.href;
 //Frequently used id
 const shortcutsMenu = document.getElementById("shortcutsMenu").children[0];
 
-//Changes an icon.
-//@param button: the button to change the icon of
-//@param icon: the icon to change the button to
+/**
+* Changes an icon.
+* @param button: the button to change the icon of
+* @param icon: the icon to change the button to
+*/
 function changeIcon(button, icon) {
     button.style.width = "48px";
     //center content
@@ -58,6 +60,12 @@ function changeIcon(button, icon) {
     button.appendChild(buttonicon);
 }
 
+/**
+ * Gets the ID of the sessionstorage item
+ * @param {number} number The number of the items in the sessionstorage
+ * @returns {Promise} The ID of the sessionstorage item
+ * @async
+    */
 function getID(number) {
     let ID = Object.keys(sessionStorage)[number]
     //start promise
@@ -79,36 +87,10 @@ function getID(number) {
         }
     })
 }
-//Set the theme
+/**
+ * Gets the ID of the sessionstorage item
+ */
 storage.sync.get("theme").then((res) => {
-    switch (res.theme) {
-        case "bavo":
-            //change topnav class background color to darkgreen
-            var topNav = document.getElementsByClassName("topnav");
-            topNav[0].style.backgroundColor = "darkgreen";
-            break;
-        case undefined:
-            storage.sync.set({ theme: "bavo" });
-            break;
-        case "none":
-            break;
-        case "dark":
-            //change topnav class background color to darkgreen
-            var topNav = document.getElementsByClassName("topnav");
-            topNav[0].style.backgroundColor = "black";
-            shortcutsMenu.style.backgroundColor = "black";
-            document.getElementById("coursesMenu").children[0].style.backgroundColor = "black";
-            document.getElementById("coursesMenu").children[0].style.color = "white !important";
-            document.getElementById("notifsMenu").children[0].style.backgroundColor = "black";
-            //edit the  .topnav__menuitem class
-            const style = document.createElement("style")
-            style.innerHTML = ".topnav__menuitem {color: white !important;} .topnav__menuitem:hover {color: black !important;}"
-            document.head.appendChild(style)
-            break
-        case "default":
-            storage.sync.set({ theme: "bavo" });
-            break
-    }
     // Add the settings button to the goto menu.
     var newMenuItem = document.createElement("a");
     newMenuItem.setAttribute("href", browser.runtime.getURL("html/settings.html"));
@@ -171,12 +153,12 @@ storage.sync.get("theme").then((res) => {
         })
     })
     observer2.observe(document.getElementById("coursesMenu"), { attributes: true, childList: false, subtree: false })
-    //So far the normal icons.
-    //Get the sessionstorage and the first item in it
-    var session = sessionStorage
     getID(0).then((ID) => {
         var messagecounter = JSON.parse(sessionStorage.getItem(ID + "MessagesCounter"))
         console.log(ID)
+        for (let i = 0; i < messagecounter.counter; i++) {
+            changeIcon(topnavbtns[4], runtime.getURL("icons/notification.png"))
+        }
         if (messagecounter.counter > 0) {
             changeIcon(topnavbtns[4], runtime.getURL("icons/notification.png"))
         } else {
@@ -192,28 +174,4 @@ storage.sync.get("theme").then((res) => {
     //remove the topnav__btn--icon--search class from 6
     topnavbtns[6].classList.remove("topnav__btn--icon--search")
     changeIcon(topnavbtns[6], runtime.getURL("icons/search.png"))
-})
-
-storage.sync.get("anonymous").then((res) => {
-    if (res.anonymous) {
-        var topnavbtns = document.getElementsByClassName("topnav__btn--profile")
-        topnavbtns[0].innerHTML = `<img alt="Profiel afbeelding" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.AUYTedvwNaCTFUs-dbnUygHaHZ%26pid%3DApi&amp;f=1&amp;ipt=24bd41b2a1c5c7aa29c63fddefc557f6f75a9e068e314b0175fc6fca5b73013d&amp;ipo=images">
-        <div class="hlp-vert-box">
-            <span>Anonymous</span>
-            <span class="topnav__btn__light"></span>
-        </div>
-        <div class="topnav__menu-arrow" aria-hidden="true"></div>`
-        setTimeout(() => {
-            if (window.location.href.includes("planner")) {
-                document.getElementsByClassName("header__avatar")[0].children[0].src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.AUYTedvwNaCTFUs-dbnUygHaHZ%26pid%3DApi&amp;f=1&amp;ipt=24bd41b2a1c5c7aa29c63fddefc557f6f75a9e068e314b0175fc6fca5b73013d&amp;ipo=images"
-            }
-            setInterval(() => {
-                if (window.location.href != href) {
-                    if (window.location.href.includes("planner")) {
-                        document.getElementsByClassName("header__avatar")[0].children[0].src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.AUYTedvwNaCTFUs-dbnUygHaHZ%26pid%3DApi&amp;f=1&amp;ipt=24bd41b2a1c5c7aa29c63fddefc557f6f75a9e068e314b0175fc6fca5b73013d&amp;ipo=images"
-                    }
-                }
-            }, 100);
-        }, 1000);
-    }
 })

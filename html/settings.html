@@ -9,14 +9,12 @@
 </head>
 
 <body style="margin:0">
-    <nav
-        style="width: 100%;background-color: darkgreen; height: 48px;color: white;font-size: 48px;align-content: center;align-items: center;text-align: center;">
-        Smartschool PLUS</nav>
+    <nav>Smartschool PLUS</nav>
     <div>
         <h2>Settings</h2>
         Theme:
         <!--List of radio buttons with themes, this is a firefox plugin-->
-        <form>
+        <form id="f">
             <input type="radio" id="bavo" name="theme" value="bavo">
             <label for="light">Bavo green</label><br>
             <input type="radio" id="dark" name="theme" value="dark">
@@ -126,5 +124,43 @@
 
     .slider.round:before {
         border-radius: 50%;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: darkgreen;
+        height: 48px;
+        color: white;
+        font-size: 48px;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        font: 3em sans-serif;
+        margin-bottom: 58px;
+    }
+    /*restyle everything*/
+    * {
+        font-family: sans-serif;
+        font-size: 16px;
+    }
+    /*make the radio buttons look nice*/
+    input[type="radio"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-clip: content-box;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        background-color: #fff;
+        cursor: pointer;
+        margin-right: 7px;
+        position: relative;
+        top: 5px;
     }
 </style>
