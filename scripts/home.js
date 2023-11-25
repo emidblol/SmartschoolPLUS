@@ -16,6 +16,10 @@ storage.sync.get('anonymous', (data) => {
             <h1 style="color: white; position: absolute; top: 47.5%; left: 50%; transform: translate(-50%, -50%);">Anonymous mode is on</h1>
             <h2 style="color: white; position: absolute; top: 52.5%; left: 50%; transform: translate(-50%, -50%);">You can turn it off in the extension settings</h2>
             `;
+        document.getElementsByClassName('homepage')[0].parentElement.appendChild(d);
+        document.getElementById('smscTopContainer').style.zIndex = '22';
+        if (document.getElementById('topnavMenuOverlay') == null) return;
+        document.getElementById('topnavMenuOverlay').style.zIndex = '22';
         let b = document.createElement('button');
         b.style.position = 'absolute';
         b.style.top = '60%';
@@ -38,9 +42,5 @@ storage.sync.get('anonymous', (data) => {
             clearInterval(interval);
         }
         d.appendChild(b);
-        document.getElementsByClassName('homepage')[0].parentElement.appendChild(d);
-        document.getElementById('smscTopContainer').style.zIndex = '22';
-        if (document.getElementById('topnavMenuOverlay') == null) return;
-        document.getElementById('topnavMenuOverlay').style.zIndex = '22';
     }, 100);
 });
