@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Smartschool +",
-  "version": "2.2",
+  "version": "2.3.1",
   "description": "Makes smartschool nicer.",
   "icons": {
     "48": "icons/s+.svg"
