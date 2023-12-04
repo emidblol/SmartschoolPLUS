@@ -1,3 +1,4 @@
+
 storage.sync.get("anonymous").then((res) => {
     console.log(res)
     if (res.anonymous) {

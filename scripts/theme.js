@@ -23,6 +23,7 @@ storage.sync.get('theme', function (data) {
             document.getElementById("coursesMenu").children[0].style.backgroundColor = "black";
             document.getElementById("coursesMenu").children[0].style.color = "white !important";
             document.getElementById("notifsMenu").children[0].style.backgroundColor = "black";
+            document.getElementById("profileMenu").children[0].style.backgroundColor = "black"
             //edit the  .topnav__menuitem class
             const style = document.createElement("style")
             style.innerHTML = ".topnav__menuitem {color: white !important;} .topnav__menuitem:hover {color: black !important;}"

@@ -46,6 +46,14 @@
       "js": [
         "scripts/home.js"
       ]
+    },
+    {
+      "matches": [
+        "*://*.smartschool.be/*"
+      ],
+      "js": [
+        "scripts/next.js"
+      ]
     }
   ],
   "permissions": [
@@ -66,7 +74,8 @@
     "icons/active.png",
     "icons/search.png",
     "html/settings.html",
-    "scripts/plannerpicturepreview.js"
+    "scripts/plannerpicturepreview.js",
+    "scripts/next.js"
   ],
   "options_ui": {
     "page": "html/settings.html",
