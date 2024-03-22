@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Smartschool +",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "Makes smartschool nicer.",
   "icons": {
     "48": "icons/s+.svg"
@@ -44,7 +44,7 @@
         "*://*.smartschool.be/*"
       ],
       "js": [
-        "scripts/home.js"
+        "scripts/next.js"
       ]
     },
     {
@@ -52,7 +52,7 @@
         "*://*.smartschool.be/*"
       ],
       "js": [
-        "scripts/next.js"
+        "scripts/home.js"
       ]
     }
   ],
@@ -73,6 +73,7 @@
     "icons/bell.png",
     "icons/active.png",
     "icons/search.png",
+    "icons/link.png",
     "html/settings.html",
     "scripts/plannerpicturepreview.js",
     "scripts/next.js"

@@ -154,24 +154,34 @@ storage.sync.get("theme").then((res) => {
     })
     observer2.observe(document.getElementById("coursesMenu"), { attributes: true, childList: false, subtree: false })
     getID(0).then((ID) => {
-        var messagecounter = JSON.parse(sessionStorage.getItem(ID + "MessagesCounter"))
+        console.log(sessionStorage.getItem(ID))
+        var messages = JSON.parse(sessionStorage.getItem(ID))
+        console.log(messages)
+        // in messages, only unread messages count
+        messages = messages.filter((message) => {
+            return message.unread != false
+        })
+        //set the counter to the length of the messages array
+        var messagecounter = { counter: messages.length }
         console.log(ID)
-        for (let i = 0; i < messagecounter.counter; i++) {
-            changeIcon(topnavbtns[4], runtime.getURL("icons/notification.png"))
-        }
         if (messagecounter.counter > 0) {
-            changeIcon(topnavbtns[4], runtime.getURL("icons/notification.png"))
+            changeIcon(topnavbtns[5], runtime.getURL("icons/notification.png"))
         } else {
-            changeIcon(topnavbtns[4], runtime.getURL("icons/mail.png"))
+            changeIcon(topnavbtns[5], runtime.getURL("icons/mail.png"))
         }
         var notifications = JSON.parse(sessionStorage.getItem(ID))
+        notifications = notifications.filter((message) => {
+            return message.unread != false
+        })
         if (notifications.length > 0) {
-            changeIcon(topnavbtns[5], runtime.getURL("icons/active.png"))
+            changeIcon(topnavbtns[6], runtime.getURL("icons/active.png"))
         } else {
-            changeIcon(topnavbtns[5], runtime.getURL("icons/bell.png"))
+            changeIcon(topnavbtns[6], runtime.getURL("icons/bell.png"))
         }
     })
+    changeIcon(topnavbtns[4],runtime.getURL("icons/link.png"))
     //remove the topnav__btn--icon--search class from 6
-    topnavbtns[6].classList.remove("topnav__btn--icon--search")
-    changeIcon(topnavbtns[6], runtime.getURL("icons/search.png"))
+    topnavbtns[7].classList.remove("topnav__btn--icon--search")
+    changeIcon(topnavbtns[7], runtime.getURL("icons/search.png"))
 })
+// [{"ssid":2237,"userid":8772,"userlt":0,"created":"2023-12-05T11:32:42.000Z","hash":"e00cd175-0cf1-4fec-9e0b-e9b1fcae2358","metadata":"{\"icon\":\"messages\",\"iconUrl\":null,\"title\":\"BookWidgets\",\"description\":\"Feedback - Revision: PrS, PrC, PaS (via Anneleen Matthys)\",\"date\":\"2023-12-05 12:32\",\"url\":\"\\/?module=Messages&msgID=5751756\",\"target\":null}","unread":true}]
